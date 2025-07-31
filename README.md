@@ -1,6 +1,7 @@
 # AI Code Reviewer
 
 This project is a web-based AI Code Reviewer application. It allows users to input a GitHub Pull Request URL and get a comprehensive code review powered by the Gemini API.
+[site](https://oleksiikuzminov.github.io/ai-code-review/)
 
 ## Features
 
