@@ -34,6 +34,8 @@ const Settings: React.FC<SettingsProps> = ({ onClose }) => {
       localStorage.removeItem('GITHUB_API_KEY');
       setGeminiApiKey('');
       setGithubApiKey('');
+      process.env.GEMINI_API_KEY = null;
+      process.env.GITHUB_API_KEY = null;
       setTestStatus({ type: 'success', message: 'Secrets cleared successfully.' });
     }
   };
