@@ -6,7 +6,6 @@ export default defineConfig(({ mode }) => {
     return {
       base: '/ai-code-review/',
       define: {
-        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
         'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
         'process.env.GITHUB_API_KEY': JSON.stringify(env.GITHUB_API_KEY)
       },

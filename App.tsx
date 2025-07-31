@@ -9,7 +9,7 @@ import { Rocket, Search, Beaker, Settings as SettingsIcon } from 'lucide-react';
 
 export default function App() {
   const [prUrl, setPrUrl] = useState('');
-  const [selectedModel, setSelectedModel] = useState('gemini-2.5-pro');
+  const [selectedModel, setSelectedModel] = useState('gemini-2.5-flash');
   const [review, setReview] = useState<Review | null>(null);
   const [testSuggestions, setTestSuggestions] = useState<TestSuggestions | null>(null);
   const [prContext, setPrContext] = useState<PrContext | null>(null);

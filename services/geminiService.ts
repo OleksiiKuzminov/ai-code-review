@@ -4,7 +4,7 @@ import { Review, TestSuggestions, ApiLogEntry, ReviewImprovement } from "../type
 const getGeminiApiKey = () => {
   const key = localStorage.getItem('GEMINI_API_KEY');
   // @ts-ignore
-  return key || import.meta.env.VITE_GEMINI_API_KEY || process.env.API_KEY || '';
+  return key || process.env.GEMINI_API_KEY || '';
 };
 
 const logInteraction = (

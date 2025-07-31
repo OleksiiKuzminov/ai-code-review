@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { X, CheckCircle, XCircle, Loader } from 'lucide-react';
+import { X, CheckCircle, XCircle, Loader, Trash2 } from 'lucide-react';
 
 interface SettingsProps {
   onClose: () => void;
@@ -26,6 +26,16 @@ const Settings: React.FC<SettingsProps> = ({ onClose }) => {
     localStorage.setItem('GEMINI_API_KEY', geminiApiKey);
     localStorage.setItem('GITHUB_API_KEY', githubApiKey);
     onClose();
+  };
+
+  const handleClearSecrets = () => {
+    if (window.confirm('Are you sure you want to clear all stored secrets? This action cannot be undone.')) {
+      localStorage.removeItem('GEMINI_API_KEY');
+      localStorage.removeItem('GITHUB_API_KEY');
+      setGeminiApiKey('');
+      setGithubApiKey('');
+      setTestStatus({ type: 'success', message: 'Secrets cleared successfully.' });
+    }
   };
 
   const handleTestConnection = async () => {
@@ -110,13 +120,20 @@ const Settings: React.FC<SettingsProps> = ({ onClose }) => {
 
         <div className="mt-8 flex justify-between items-center">
           <button
-            onClick={handleTestConnection}
-            className="h-10 px-6 bg-secondary text-secondary-foreground hover:bg-secondary/80 font-semibold rounded-md transition-colors flex items-center"
-            disabled={testStatus?.type === 'loading'}
-          >
-            {testStatus?.type === 'loading' ? <Loader className="animate-spin h-5 w-5" /> : 'Test Connection'}
+            onClick={handleClearSecrets}
+            className="h-10 px-4 bg-destructive text-destructive-foreground hover:bg-destructive/80 font-semibold rounded-md transition-colors text-sm flex items-center">
+              <Trash2 className="h-4 w-4 mr-2" />
+              Clear Secrets
           </button>
-          <div className="flex space-x-3">
+
+          <div className="flex items-center space-x-3">
+            <button
+              onClick={handleTestConnection}
+              className="h-10 px-6 bg-secondary text-secondary-foreground hover:bg-secondary/80 font-semibold rounded-md transition-colors flex items-center"
+              disabled={testStatus?.type === 'loading'}
+            >
+              {testStatus?.type === 'loading' ? <Loader className="animate-spin h-5 w-5" /> : 'Test Connection'}
+            </button>
             <button
               onClick={onClose}
               className="h-10 px-6 bg-secondary text-secondary-foreground hover:bg-secondary/80 font-semibold rounded-md transition-colors"
