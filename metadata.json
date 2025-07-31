@@ -1,0 +1,6 @@
+{
+  "name": "AI Code Reviewer",
+  "description": "An advanced code reviewer powered by the Gemini API. It performs a multi-step analysis of GitHub Pull Requests, including self-critique, to provide high-quality feedback and test case suggestions.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}
