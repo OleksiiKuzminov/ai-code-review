@@ -1,5 +1,5 @@
-import { GoogleGenAI, Type } from "@google/genai";
-import { Review, TestSuggestions, ApiLogEntry, ReviewImprovement } from "../types";
+import {GoogleGenAI, Type} from "@google/genai";
+import {ApiLogEntry, Review, ReviewImprovement, TestSuggestions} from "../types";
 
 const getGeminiApiKey = () => {
   const key = localStorage.getItem('GEMINI_API_KEY');
@@ -202,7 +202,7 @@ export const geminiService = {
     const aiGeneratedPrompt = response.text;
     logInteraction(logCallback, 'Generate Copilot Prompt', prompt, aiGeneratedPrompt);
 
-    const finalPromptForUser = `
+    return `
 ${aiGeneratedPrompt}
 
 ---
@@ -219,8 +219,6 @@ ${aiGeneratedPrompt}
 ${codeSnippet}
 \`\`\`
 `.trim();
-
-    return finalPromptForUser;
   },
 
   generateTestCreationPrompt: async (
@@ -264,7 +262,7 @@ ${codeSnippet}
     const aiGeneratedPrompt = response.text;
     logInteraction(logCallback, 'Generate Test Creation Prompt', prompt, aiGeneratedPrompt);
 
-    const finalPromptForUser = `
+    return `
 ${aiGeneratedPrompt}
 
 ---
@@ -277,7 +275,5 @@ ${aiGeneratedPrompt}
 **Pull Request Summary:**
 ${contextSummary}
 `.trim();
-    
-    return finalPromptForUser;
   }
 };
